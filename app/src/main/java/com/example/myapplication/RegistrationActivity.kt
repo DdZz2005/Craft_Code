@@ -18,8 +18,7 @@ class RegistrationActivity : AppCompatActivity() {
         binding = ActivityRegistrationBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-    }
-    fun onClick(view: View){
+
         val reg = binding.btnRegister
         reg.setOnClickListener{
             val intent = Intent(this, RegistrationSuccessActivity::class.java)
@@ -27,4 +26,14 @@ class RegistrationActivity : AppCompatActivity() {
             finish()
         }
     }
+
+
+    override fun onStart() {
+        super.onStart()
+    }
+
+    override fun onResume() {
+        super.onResume()
+    }
+
 }
