@@ -25,4 +25,13 @@ class RegistrationSuccessActivity : AppCompatActivity() {
             finish()
         }
     }
+
+    override fun onStart() {
+        super.onStart()
+    }
+
+    override fun onResume() {
+        super.onResume()
+    }
+
 }

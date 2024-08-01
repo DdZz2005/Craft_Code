@@ -15,6 +15,13 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, RegistrationActivity::class.java)
             startActivity(intent)
         }
+
+        val forgotPasswordTextView: TextView = findViewById(R.id.tvForgotPassword)
+        forgotPasswordTextView.setOnClickListener {
+            val intent = Intent(this, ForgottenPasswordStartActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
     override fun onStart() {
@@ -24,4 +31,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
     }
+
+
 }
