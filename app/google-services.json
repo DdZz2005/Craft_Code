@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "134708359422",
+    "project_id": "craftcode-70d69",
+    "storage_bucket": "craftcode-70d69.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:134708359422:android:40f6a4bb6a52f25a36f5af",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtB78hTeiRrrpwcv0JA55E3iw1ex7xcBk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
