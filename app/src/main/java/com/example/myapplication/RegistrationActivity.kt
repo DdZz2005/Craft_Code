@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -14,11 +15,16 @@ class RegistrationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_registration)
+        binding = ActivityRegistrationBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
     }
     fun onClick(view: View){
-        binding = ActivityRegistrationBinding.inflate(layoutInflater)
-        var view = binding.root
-        setContentView(view)
+        val reg = binding.btnRegister
+        reg.setOnClickListener{
+            val intent = Intent(this, RegistrationSuccessActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }

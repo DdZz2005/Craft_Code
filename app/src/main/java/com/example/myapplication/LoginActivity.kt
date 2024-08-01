@@ -10,19 +10,12 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-
-
-
-
         val registrationTextView: TextView = findViewById(R.id.Registration)
         registrationTextView.setOnClickListener {
             val intent = Intent(this, RegistrationActivity::class.java)
             startActivity(intent)
         }
-
-
     }
-
 
     override fun onStart() {
         super.onStart()
