@@ -39,19 +39,19 @@ class RegistrationActivity : AppCompatActivity() {
 
         // Проверка данных
         if (email.isBlank() || pass.isBlank() || confirmPassword.isBlank() || firstName.isBlank() || lastName.isBlank() || middleName.isBlank() || role.isBlank()) {
-            Toast.makeText(this, "Все поля должны быть заполнены", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Все поля должны быть заполнены!", Toast.LENGTH_SHORT).show()
             return
         }
 
         if (pass != confirmPassword) {
-            Toast.makeText(this, "Пароль и подтверждение пароля не совпадают", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Пароль и подтверждение пароля не совпадают!", Toast.LENGTH_SHORT).show()
             return
         }
 
         auth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(this) { task ->
             if (task.isSuccessful) {
                 saveUserToDatabase(firstName, lastName, middleName, role)
-                Toast.makeText(this, "Успешная регистрация", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Успешная регистрация!", Toast.LENGTH_SHORT).show()
                 finish()
             } else {
                 val exception = task.exception
