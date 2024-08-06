@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import android.content.Intent
+import android.content.SharedPreferences
+import android.widget.EditText
 import android.widget.Toast
 import com.example.myapplication.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
-
 class LoginActivity : AppCompatActivity() {
 
+    private lateinit var pref: SharedPreferences
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
 
@@ -17,11 +19,19 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-    }
 
-    override fun onStart() {
-        super.onStart()
+        // Инициализация SharedPreferences
+        pref = getSharedPreferences("startMain", MODE_PRIVATE)
         auth = FirebaseAuth.getInstance()
+
+        // Проверка, есть ли сохраненное состояние авторизации
+        val isLoggedIn = pref.getBoolean("isLoggedIn", false)
+        if (isLoggedIn) {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+            return
+        }
 
         // Setup click listener for registration link
         val registrationTextView: TextView = findViewById(R.id.Registration)
@@ -49,6 +59,11 @@ class LoginActivity : AppCompatActivity() {
 
             auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
+                    // Сохранение состояния авторизации
+                    val editor = pref.edit()
+                    editor.putBoolean("isLoggedIn", true)
+                    editor.apply()
+
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     finish() // Optionally finish the login activity
@@ -57,5 +72,17 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    // Optionally handle logout to reset shared preferences
+    fun logout() {
+        auth.signOut()
+        val editor = pref.edit()
+        editor.putBoolean("isLoggedIn", false)
+        editor.apply()
+
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }
