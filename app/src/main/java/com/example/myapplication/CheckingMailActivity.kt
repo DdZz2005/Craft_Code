@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.myapplication.databinding.ActivityCheckingMailBinding
@@ -18,6 +19,13 @@ class CheckingMailActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+
+        binding.btnGoBack.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
     }
 
     override fun onResume() {
