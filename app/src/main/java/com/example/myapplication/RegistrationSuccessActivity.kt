@@ -2,11 +2,8 @@ package com.example.myapplication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
 import android.content.Intent
-import com.example.myapplication.databinding.ActivityLoginBinding
 import com.example.myapplication.databinding.ActivityRegistrationSuccessBinding
-
 class RegistrationSuccessActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegistrationSuccessBinding
